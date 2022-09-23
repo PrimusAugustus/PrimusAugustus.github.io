@@ -1,23 +1,26 @@
+let zBereich;
+
 function setup() {
-  canvasX = 600;
-  canvasY = 387;
-  createCanvas(canvasX, canvasY);
+
+  zBereich = createCanvas(windowWidth, windowHeight);
+  zBereich.position(0,0);//Links oben
+  zBereich.style('z-index','-1') //Verschiebung auf der Z-Achse
+
+  r = 0;
+  g = 0;
+  b = 0;
+  fR = 1; // Faktor Rot
+  fG = 2;
+  fB = 3;
   
-  r = 25;
-  x = r;
-  y = r;
-  SpeedX = 3;
-  SpeedY = 3;
 }
 
 function draw() {
-  background(220,50,150);
-  if(x > canvasX - r||x < r)SpeedX *= -1;
-  if(y > canvasY - r||y < r)SpeedY *= -1;
+ //background(10,80,10);
+ rot = mouseX*255/windowWidth;
+ blau = mouseY*255/windowHeight;
+  noStroke;
+ fill(rot,50,blau);
+  circle(mouseX,mouseY,50);
   
-  x += SpeedX;
-  y += SpeedY;
-
-  circle(x,y,r);
-
 }
